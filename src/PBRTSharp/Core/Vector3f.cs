@@ -48,6 +48,10 @@ namespace PBRTSharp.Core
         public static Vector3f Negate(in Vector3f item) => -item;
         public static Vector3f Divide(in Vector3f left, in double right) => left / right;
 
+        // Static methods
+        public static Vector3f ComponentMin(in Vector3f v1, in Vector3f v2) => new Vector3f(Math.Min(v1.X, v2.X), Math.Min(v1.Y, v2.Y), Math.Min(v1.Z, v2.Z));
+        public static Vector3f ComponentMax(in Vector3f v1, in Vector3f v2) => new Vector3f(Math.Max(v1.X, v2.X), Math.Max(v1.Y, v2.Y), Math.Max(v1.Z, v2.Z));
+
         // Overrides from System.Object
         public override string ToString() => $"[{X.ToString("G17", CultureInfo.InvariantCulture)}, {Y.ToString("G17", CultureInfo.InvariantCulture)}, {Z.ToString("G17", CultureInfo.InvariantCulture)}]";
         public override bool Equals(object? obj) => obj is Vector3f && Equals((Vector3f)obj);
@@ -64,6 +68,20 @@ namespace PBRTSharp.Core
                 (Y * other.Z) - (Z * other.Y),
                 (Z * other.X) - (X * other.Z),
                 (X * other.Y) - (Y * other.X));
+        }
+        public double LengthSquared() => (X * X) + (Y * Y) + (Z * Z);
+        public double Length() => Math.Sqrt(LengthSquared());
+        public Vector3f Normalize() => this / Length();
+        public double MinComponent() => Math.Min(X, Math.Min(Y, Z));
+        public double MaxComponent() => Math.Max(X, Math.Max(Y, Z));
+        public double MaxDimension() => X > Y ? (X > Z ? 0 : 2) : (Y > Z ? 1 : 2);
+        public Vector3f Permute(in int X, in int Y, in int Z) => new Vector3f(this[X], this[Y], this[Z]);
+        public void CreateCoordinateSystem(out Vector3f v2, out Vector3f v3)
+        {
+            v2 = Math.Abs(X) > Math.Abs(Y)
+                ? new Vector3f(-Z, 0, X) / Math.Sqrt((X * X) + (Z * Z))
+                : new Vector3f(0, Z, -Y) / Math.Sqrt((Y * Y) + (Z * Z));
+            v3 = Cross(v2);
         }
 
         // Private instance methods
