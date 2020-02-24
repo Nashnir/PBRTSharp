@@ -47,7 +47,7 @@ namespace PBRTSharp.Core
         public static Vector3f Multiply(in double left, in Vector3f right) => left * right;
         public static Vector3i Negate(in Vector3i item) => -item;
         public static Vector3f Divide(in Vector3i left, in double right) => left / right;
-        public static Vector3f ToVector3f(in Vector3i v) => (Vector3f)v;
+        public static Vector3f ToVector3f(in Vector3i v) => v;
 
         // Static methods
         public static Vector3i ComponentMin(in Vector3i v1, in Vector3i v2) => new Vector3i(Math.Min(v1.X, v2.X), Math.Min(v1.Y, v2.Y), Math.Min(v1.Z, v2.Z));
