@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Globalization;
 
-namespace PBRTSharp.Core
+namespace PBRTSharp.Core.Vectors
 {
     public readonly struct Vector2i : IEquatable<Vector2i>
     {
@@ -37,16 +37,6 @@ namespace PBRTSharp.Core
         public static Vector2i operator -(in Vector2i v) => new Vector2i(-v.X, -v.Y);
         public static bool operator ==(Vector2i v1, Vector2i v2) => v1.Equals(v2);
         public static bool operator !=(Vector2i v1, Vector2i v2) => !(v1 == v2);
-        public static implicit operator Vector2f(in Vector2i v) => new Vector2f(v.X, v.Y);
-
-        // Named operator overloads
-        public static Vector2i Add(in Vector2i left, in Vector2i right) => left + right;
-        public static Vector2i Subtract(in Vector2i left, in Vector2i right) => left - right;
-        public static Vector2f Multiply(in Vector2i left, in double right) => left * right;
-        public static Vector2f Multiply(in double left, in Vector2i right) => left * right;
-        public static Vector2i Negate(in Vector2i item) => -item;
-        public static Vector2f Divide(in Vector2i left, in double right) => left / right;
-        public static Vector2f ToVector2f(in Vector2i v) => v;
 
         // Static methods
         public static Vector2i ComponentMin(in Vector2i v1, in Vector2i v2) => new Vector2i(Math.Min(v1.X, v2.X), Math.Min(v1.Y, v2.Y));

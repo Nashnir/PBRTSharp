@@ -1,8 +1,7 @@
-using System.Linq;
-using PBRTSharp.Core;
+using PBRTSharp.Core.Vectors;
 using Xunit;
 
-namespace PBRTSharpTest.Core
+namespace PBRTSharpTest.Core.Vectors
 {
     public class Vector3fTests
     {
@@ -24,12 +23,6 @@ namespace PBRTSharpTest.Core
         [Theory]
         [MemberData(nameof(AddData))]
         public void TestAddOperator(Vector3f left, Vector3f right, Vector3f expected) => Assert.Equal(expected, left + right);
-        [Theory]
-        [MemberData(nameof(AddData))]
-        public void TestAddMethod(Vector3f left, Vector3f right, Vector3f expected) => Assert.Equal(expected, Vector3f.Add(in left, in right));
-        [Theory]
-        [MemberData(nameof(AddCompareData))]
-        public void TestAddMethodEqualsAddOperator(Vector3f left, Vector3f right) => Assert.Equal(left + right, Vector3f.Add(in left, in right));
         public static TheoryData<Vector3f, Vector3f, Vector3f> AddData => new TheoryData<Vector3f, Vector3f, Vector3f>
         {
             { ZeroVector, ZeroVector, ZeroVector },
@@ -52,27 +45,10 @@ namespace PBRTSharpTest.Core
             { ZUnitVector, new Vector3f(0,0,-1), ZeroVector },
 
         };
-        public static TheoryData<Vector3f, Vector3f> AddCompareData
-        {
-            get {
-                var data = new TheoryData<Vector3f, Vector3f>();
-                foreach (var datum in AddData.Select(td => new[] { td[0], td[1] }))
-                {
-                    data.Add((Vector3f)datum[0], (Vector3f)datum[1]);
-                }
-                return data;
-            }
-        }
 
         [Theory]
         [MemberData(nameof(SubtractData))]
         public void TestSubtractOperator(Vector3f left, Vector3f right, Vector3f expected) => Assert.Equal(expected, left - right);
-        [Theory]
-        [MemberData(nameof(SubtractData))]
-        public void TestSubtractMethod(Vector3f left, Vector3f right, Vector3f expected) => Assert.Equal(expected, Vector3f.Subtract(in left, in right));
-        [Theory]
-        [MemberData(nameof(SubtractCompareData))]
-        public void TestSubtractMethodEqualsSubtractOperator(Vector3f left, Vector3f right) => Assert.Equal(left - right, Vector3f.Subtract(in left, in right));
         public static TheoryData<Vector3f, Vector3f, Vector3f> SubtractData => new TheoryData<Vector3f, Vector3f, Vector3f>
         {
             { ZeroVector, ZeroVector, ZeroVector },
@@ -95,16 +71,5 @@ namespace PBRTSharpTest.Core
             { ZUnitVector, new Vector3f(0,0,-1), new Vector3f(0,0,2) },
 
         };
-        public static TheoryData<Vector3f, Vector3f> SubtractCompareData
-        {
-            get {
-                var data = new TheoryData<Vector3f, Vector3f>();
-                foreach (var datum in SubtractData.Select(td => new[] { td[0], td[1] }))
-                {
-                    data.Add((Vector3f)datum[0], (Vector3f)datum[1]);
-                }
-                return data;
-            }
-        }
     }
 }
