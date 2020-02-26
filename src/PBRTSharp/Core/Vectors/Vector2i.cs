@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Globalization;
 
 namespace PBRTSharp.Core.Vectors
@@ -12,28 +11,16 @@ namespace PBRTSharp.Core.Vectors
         {
             X = x;
             Y = y;
-            Debug.Assert(!HasNaNs());
         }
 
-        public int this[in int i]
-        {
-            get {
-                Debug.Assert(i == 0 || i == 1);
-                return i == 0 ? X : Y;
-            }
-        }
+        public int this[in int i] => i == 0 ? X : Y;
 
         // Operator overloads
         public static Vector2i operator +(in Vector2i v1, in Vector2i v2) => new Vector2i(v1.X + v2.X, v1.Y + v2.Y);
         public static Vector2i operator -(in Vector2i v1, in Vector2i v2) => new Vector2i(v1.X - v2.X, v1.Y - v2.Y);
         public static Vector2f operator *(in Vector2i v, in double d) => new Vector2f(d * v.X, d * v.Y);
         public static Vector2f operator *(in double d, in Vector2i v) => v * d;
-        public static Vector2f operator /(in Vector2i v, in double d)
-        {
-            Debug.Assert(d != 0);
-            var recip = 1.0d / d;
-            return v * recip;
-        }
+        public static Vector2f operator /(in Vector2i v, in double d) => v * (1.0d / d);
         public static Vector2i operator -(in Vector2i v) => new Vector2i(-v.X, -v.Y);
         public static bool operator ==(Vector2i v1, Vector2i v2) => v1.Equals(v2);
         public static bool operator !=(Vector2i v1, Vector2i v2) => !(v1 == v2);
@@ -59,8 +46,5 @@ namespace PBRTSharp.Core.Vectors
         public double MaxComponent() => Math.Max(X, Y);
         public double MaxDimension() => X > Y ? 0 : 1;
         public Vector2i Permute(in int X, in int Y) => new Vector2i(this[X], this[Y]);
-
-        // Private instance methods
-        private bool HasNaNs() => double.IsNaN(X) || double.IsNaN(Y);
     }
 }

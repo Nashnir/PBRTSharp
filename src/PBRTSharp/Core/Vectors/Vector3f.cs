@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Globalization;
 
 namespace PBRTSharp.Core.Vectors
@@ -14,28 +13,16 @@ namespace PBRTSharp.Core.Vectors
             X = x;
             Y = y;
             Z = z;
-            Debug.Assert(!HasNaNs());
         }
 
-        public double this[in int i]
-        {
-            get {
-                Debug.Assert(i >= 0 && i <= 2);
-                return i == 0 ? X : i == 1 ? Y : Z;
-            }
-        }
+        public double this[in int i] => i == 0 ? X : i == 1 ? Y : Z;
 
         // Operator overloads
         public static Vector3f operator +(in Vector3f v1, in Vector3f v2) => new Vector3f(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
         public static Vector3f operator -(in Vector3f v1, in Vector3f v2) => new Vector3f(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
         public static Vector3f operator *(in Vector3f v, in double d) => new Vector3f(d * v.X, d * v.Y, d * v.Z);
         public static Vector3f operator *(in double d, in Vector3f v) => v * d;
-        public static Vector3f operator /(in Vector3f v, in double d)
-        {
-            Debug.Assert(d != 0);
-            var recip = 1.0d / d;
-            return v * recip;
-        }
+        public static Vector3f operator /(in Vector3f v, in double d) => v * (1.0d / d);
         public static Vector3f operator -(in Vector3f v) => new Vector3f(-v.X, -v.Y, -v.Z);
         public static bool operator ==(Vector3f v1, Vector3f v2) => v1.Equals(v2);
         public static bool operator !=(Vector3f v1, Vector3f v2) => !(v1 == v2);
@@ -75,8 +62,5 @@ namespace PBRTSharp.Core.Vectors
                 : new Vector3f(0, Z, -Y) / Math.Sqrt((Y * Y) + (Z * Z));
             v3 = Cross(v2);
         }
-
-        // Private instance methods
-        private bool HasNaNs() => double.IsNaN(X) || double.IsNaN(Y) || double.IsNaN(Z);
     }
 }
