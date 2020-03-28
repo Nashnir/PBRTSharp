@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace PBRTSharp.Core.Vectors
@@ -34,7 +35,7 @@ namespace PBRTSharp.Core.Vectors
         // Overrides from System.Object
         public override string ToString() => $"[{X.ToString("G17", CultureInfo.InvariantCulture)}, {Y.ToString("G17", CultureInfo.InvariantCulture)}, {Z.ToString("G17", CultureInfo.InvariantCulture)}]";
         public override bool Equals(object? obj) => obj is Vector3f && Equals((Vector3f)obj);
-        public bool Equals(Vector3f other) => X == other.X && Y == other.Y && Z == other.Z;
+        public bool Equals([AllowNull]Vector3f other) => X == other.X && Y == other.Y && Z == other.Z;
         public override int GetHashCode() => (int)((3 * X) + (5 * Y) + (7 * Z));
 
         // Public instance methods
