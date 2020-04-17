@@ -6,7 +6,7 @@ using PBRTSharp.Core.Vectors;
 
 namespace PBRTSharp.Core.Points
 {
-    readonly struct Point3f : IEquatable<Point3f>
+    public readonly struct Point3f : IEquatable<Point3f>
     {
         public double X { get; }
         public double Y { get; }
