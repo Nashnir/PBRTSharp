@@ -24,6 +24,8 @@ namespace PBRTSharp.Core.Points
         public static Point3f operator +(in Point3f p1, in Point3f p2) => new Point3f(p1.X + p2.X, p1.Y + p2.Y, p1.Z + p2.Z);
         public static Vector3f operator -(in Point3f p1, in Point3f p2) => new Vector3f(p1.X - p2.X, p1.Y - p2.Y, p1.Z - p2.Z);
         public static Point3f operator *(in double d, in Point3f p) => new Point3f(d * p.X, d * p.Y, d * p.Z);
+        public static bool operator ==(Point3f p1, Point3f p2) => p1.Equals(p2);
+        public static bool operator !=(Point3f p1, Point3f p2) => !(p1 == p2);
 
         // Static methods
         public static Point3f ComponentMin(in Point3f p1, in Point3f p2) => new Point3f(Math.Min(p1.X, p2.X), Math.Min(p1.Y, p2.Y), Math.Min(p1.Z, p2.Z));

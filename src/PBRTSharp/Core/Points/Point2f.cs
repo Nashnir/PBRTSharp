@@ -21,6 +21,8 @@ namespace PBRTSharp.Core.Points
         public static Point2f operator +(in Point2f p1, in Point2f p2) => new Point2f(p1.X + p2.X, p1.Y + p2.Y);
         public static Vector2f operator -(in Point2f p1, in Point2f p2) => new Vector2f(p1.X - p2.X, p1.Y - p2.Y);
         public static Point2f operator *(in double d, in Point2f p) => new Point2f(d * p.X, d * p.Y);
+        public static bool operator ==(Point2f p1, Point2f p2) => p1.Equals(p2);
+        public static bool operator !=(Point2f p1, Point2f p2) => !(p1 == p2);
 
         // Static methods
         public static Point2f ComponentMin(in Point2f p1, in Point2f p2) => new Point2f(Math.Min(p1.X, p2.X), Math.Min(p1.Y, p2.Y));
