@@ -56,6 +56,6 @@ namespace PBRTSharp.Core.Normals
         public double MaxComponent() => Math.Max(X, Math.Max(Y, Z));
         public double MaxDimension() => X > Y ? (X > Z ? 0 : 2) : (Y > Z ? 1 : 2);
         public Normal3f Permute(in int X, in int Y, in int Z) => new Normal3f(this[X], this[Y], this[Z]);
-        public Normal3f FlipToSameHemisphereAs(in Vector3f v) => Dot(v) < 0f ? -this : this;
+        public Normal3f FlipToSameHemisphereAs(in Vector3f v) => Dot(v) < 0d ? -this : this;
     }
 }
