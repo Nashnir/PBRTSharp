@@ -19,8 +19,8 @@ namespace PBRTSharp.Core.Vectors
         // Operator overloads
         public static Vector2i operator +(in Vector2i v1, in Vector2i v2) => new Vector2i(v1.X + v2.X, v1.Y + v2.Y);
         public static Vector2i operator -(in Vector2i v1, in Vector2i v2) => new Vector2i(v1.X - v2.X, v1.Y - v2.Y);
-        public static Vector2f operator *(in double d, in Vector2i v) => new Vector2f(d * v.X, d * v.Y);
-        public static Vector2f operator /(in Vector2i v, in double d) => 1.0d / d * v;
+        public static Vector2i operator *(in double d, in Vector2i v) => new Vector2i((int)(d * v.X), (int)(d * v.Y));
+        public static Vector2i operator /(in Vector2i v, in double d) => 1.0d / d * v;
         public static Vector2i operator -(in Vector2i v) => new Vector2i(-v.X, -v.Y);
         public static bool operator ==(Vector2i v1, Vector2i v2) => v1.Equals(v2);
         public static bool operator !=(Vector2i v1, Vector2i v2) => !(v1 == v2);
@@ -41,7 +41,7 @@ namespace PBRTSharp.Core.Vectors
         public double AbsDot(in Vector2i other) => Math.Abs(Dot(other));
         public double LengthSquared() => (X * X) + (Y * Y);
         public double Length() => Math.Sqrt(LengthSquared());
-        public Vector2f Normalize() => this / Length();
+        public Vector2i Normalize() => this / Length();
         public double MinComponent() => Math.Min(X, Y);
         public double MaxComponent() => Math.Max(X, Y);
         public double MaxDimension() => X > Y ? 0 : 1;
