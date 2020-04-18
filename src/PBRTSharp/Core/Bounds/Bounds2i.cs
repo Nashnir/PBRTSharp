@@ -121,9 +121,9 @@ namespace PBRTSharp.Core.Bounds
         public override int GetHashCode() => (3 * Min.GetHashCode()) + (5 * Max.GetHashCode());
         public IEnumerator<Point2i> GetEnumerator()
         {
-            for (var i = 0; i < Max.X; i++)
+            for (var j = 0; j < Max.Y; j++)
             {
-                for (var j = 0; j < Max.Y; j++)
+                for (var i = 0; i < Max.X; i++)
                 {
                     yield return new Point2i(i, j);
                 }
