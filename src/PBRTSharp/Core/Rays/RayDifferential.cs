@@ -1,9 +1,10 @@
-﻿using PBRTSharp.Core.Points;
+﻿using System;
+using PBRTSharp.Core.Points;
 using PBRTSharp.Core.Vectors;
 
 namespace PBRTSharp.Core.Rays
 {
-    class RayDifferential : Ray
+    public class RayDifferential : Ray
     {
         public bool HasDifferentials { get; set; }
         public Point3f RxOrigin { get; set; }
