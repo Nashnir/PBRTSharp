@@ -16,7 +16,7 @@ namespace PBRTSharp.Core.Rays
         {
             HasDifferentials = false;
         }
-        public RayDifferential(in Ray r) : this(r.Origin, r.Direction, r.TMax, r.CastTime) { }
+        public RayDifferential(in Ray r) : this(r?.Origin ?? throw new ArgumentNullException(nameof(r)), r.Direction, r.TMax, r.CastTime) { }
 
         public void ScaleDifferentials(in double s)
         {
