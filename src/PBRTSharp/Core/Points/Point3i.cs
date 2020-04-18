@@ -22,6 +22,7 @@ namespace PBRTSharp.Core.Points
         public static Point3i operator +(in Point3i p, in Vector3f v) => new Point3i((int)(p.X + v.X), (int)(p.Y + v.Y), (int)(p.Z + v.Z));
         public static Point3i operator +(in Point3i p1, in Point3i p2) => new Point3i(p1.X + p2.X, p1.Y + p2.Y, p1.Z + p2.Z);
         public static Vector3f operator -(in Point3i p1, in Point3i p2) => new Vector3f(p1.X - p2.X, p1.Y - p2.Y, p1.Z - p2.Z);
+        public static Point3i operator -(in Point3i p, in Vector3i v) => new Point3i(p.X - v.X, p.Y - v.Y, p.Z - v.Z);
         public static Point3i operator *(in double d, in Point3i p) => new Point3i((int)(d * p.X), (int)(d * p.Y), (int)(d * p.Z));
         public static bool operator ==(Point3i p1, Point3i p2) => p1.Equals(p2);
         public static bool operator !=(Point3i p1, Point3i p2) => !(p1 == p2);
