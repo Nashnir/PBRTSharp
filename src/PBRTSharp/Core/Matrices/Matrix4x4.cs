@@ -1,4 +1,6 @@
-﻿namespace PBRTSharp.Core.Matrices
+﻿using System;
+
+namespace PBRTSharp.Core.Matrices
 {
     // TODO: I don't think this will perform well. Test it later.
     public readonly struct Matrix4x4
@@ -50,5 +52,32 @@
             }
             return new Matrix4x4(newArray);
         }
+
+        private static readonly ValueTuple<int, int>[] OrderOfRowOperations =
+        {
+            (0,0),
+            (0,1),
+            (0,2),
+            (0,3),
+
+            (1,1),
+            (1,2),
+            (1,3),
+
+            (2,2),
+            (2,3),
+
+            (3,3),
+            (3,2),
+            (3,1),
+            (3,0),
+
+            (2,1),
+            (2,0),
+
+            (1,0)
+        };
+
+        public Matrix4x4 Inverse() => throw new NotImplementedException();
     }
 }
