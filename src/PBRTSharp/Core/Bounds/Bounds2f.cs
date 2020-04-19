@@ -25,8 +25,8 @@ namespace PBRTSharp.Core.Bounds
                                                              new Point2f(double.MaxValue, double.MaxValue));
         public Point2f this[in int i] => i == 0 ? Min : Max;
 
-        public static bool operator ==(Bounds2f p1, Bounds2f p2) => p1.Equals(p2);
-        public static bool operator !=(Bounds2f p1, Bounds2f p2) => !(p1 == p2);
+        public static bool operator ==(in Bounds2f p1, in Bounds2f p2) => p1.Equals(p2);
+        public static bool operator !=(in Bounds2f p1, in Bounds2f p2) => !(p1 == p2);
 
         public Point2f Corner(in int corner)
         {

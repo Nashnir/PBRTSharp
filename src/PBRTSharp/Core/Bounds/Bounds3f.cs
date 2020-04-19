@@ -25,8 +25,8 @@ namespace PBRTSharp.Core.Bounds
                                                              new Point3f(double.MaxValue, double.MaxValue, double.MaxValue));
         public Point3f this[in int i] => i == 0 ? Min : Max;
 
-        public static bool operator ==(Bounds3f p1, Bounds3f p2) => p1.Equals(p2);
-        public static bool operator !=(Bounds3f p1, Bounds3f p2) => !(p1 == p2);
+        public static bool operator ==(in Bounds3f p1, in Bounds3f p2) => p1.Equals(p2);
+        public static bool operator !=(in Bounds3f p1, in Bounds3f p2) => !(p1 == p2);
 
         public Point3f Corner(in int corner)
         {
