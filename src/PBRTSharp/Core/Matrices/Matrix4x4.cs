@@ -33,13 +33,14 @@
             );
         }
 
+        // TODO: check performance
         public Matrix4x4 Multiply(in Matrix4x4 other)
         {
             var newArray = new double[4][];
             for (var i = 0; i < 4; i++)
             {
                 newArray[i] = new double[4];
-                for (var j = 0; j < 4; i++)
+                for (var j = 0; j < 4; j++)
                 {
                     newArray[i][j] = (m[i][0] * other.m[0][j]) +
                                      (m[i][1] * other.m[1][j]) +
