@@ -16,7 +16,7 @@ namespace PBRTSharp.Core.Vectors
             Z = z;
         }
 
-        public int this[in int i] => i == 0 ? X : i == 1 ? Y : Z;
+        public int this[int i] => i == 0 ? X : i == 1 ? Y : Z;
 
         // Operator overloads
         public static Vector3i operator +(in Vector3i v1, in Vector3i v2) => new Vector3i(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
@@ -55,6 +55,6 @@ namespace PBRTSharp.Core.Vectors
         public double MinComponent() => Math.Min(X, Math.Min(Y, Z));
         public double MaxComponent() => Math.Max(X, Math.Max(Y, Z));
         public double MaxDimension() => X > Y ? (X > Z ? 0 : 2) : (Y > Z ? 1 : 2);
-        public Vector3i Permute(in int X, in int Y, in int Z) => new Vector3i(this[X], this[Y], this[Z]);
+        public Vector3i Permute(int X, int Y, int Z) => new Vector3i(this[X], this[Y], this[Z]);
     }
 }

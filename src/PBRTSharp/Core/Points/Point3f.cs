@@ -17,7 +17,7 @@ namespace PBRTSharp.Core.Points
             Y = y;
             Z = z;
         }
-        public double this[in int i] => i == 0 ? X : i == 1 ? Y : Z;
+        public double this[int i] => i == 0 ? X : i == 1 ? Y : Z;
 
         // Operator overloads
         public static Point3f operator +(in Point3f p, in Vector3f v) => new Point3f(p.X + v.X, p.Y + v.Y, p.Z + v.Z);
@@ -50,6 +50,6 @@ namespace PBRTSharp.Core.Points
         public Point3f Floor() => new Point3f(Math.Floor(X), Math.Floor(Y), Math.Floor(Z));
         public Point3f Ceiling() => new Point3f(Math.Ceiling(X), Math.Ceiling(Y), Math.Ceiling(Z));
         public Point3f Lerp(double t, in Point3f p) => ((1.0d - t) * this) + (t * p);
-        public Point3f Permute(in int X, in int Y, in int Z) => new Point3f(this[X], this[Y], this[Z]);
+        public Point3f Permute(int X, int Y, int Z) => new Point3f(this[X], this[Y], this[Z]);
     }
 }

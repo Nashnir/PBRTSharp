@@ -14,7 +14,7 @@ namespace PBRTSharp.Core.Points
             X = x;
             Y = y;
         }
-        public int this[in int i] => i == 0 ? X : Y;
+        public int this[int i] => i == 0 ? X : Y;
 
         // Operator overloads
         public static Point2i operator +(in Point2i p, in Vector2i v) => new Point2i(p.X + v.X, p.Y + v.Y);
@@ -43,6 +43,6 @@ namespace PBRTSharp.Core.Points
         public Point2i Floor() => new Point2i(X, Y);
         public Point2i Ceiling() => new Point2i(X, Y);
         public Point2i Lerp(double t, in Point2i p) => new Point2i((int)ExtraMath.Lerp(t, X, p.X), (int)ExtraMath.Lerp(t, Y, p.Y));
-        public Point2i Permute(in int X, in int Y) => new Point2i(this[X], this[Y]);
+        public Point2i Permute(int X, int Y) => new Point2i(this[X], this[Y]);
     }
 }

@@ -16,7 +16,7 @@ namespace PBRTSharp.Core.Vectors
             Z = z;
         }
 
-        public double this[in int i] => i == 0 ? X : i == 1 ? Y : Z;
+        public double this[int i] => i == 0 ? X : i == 1 ? Y : Z;
 
         // Operator overloads
         public static Vector3f operator +(in Vector3f v1, in Vector3f v2) => new Vector3f(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
@@ -54,7 +54,7 @@ namespace PBRTSharp.Core.Vectors
         public double MinComponent() => Math.Min(X, Math.Min(Y, Z));
         public double MaxComponent() => Math.Max(X, Math.Max(Y, Z));
         public double MaxDimension() => X > Y ? (X > Z ? 0 : 2) : (Y > Z ? 1 : 2);
-        public Vector3f Permute(in int X, in int Y, in int Z) => new Vector3f(this[X], this[Y], this[Z]);
+        public Vector3f Permute(int X, int Y, int Z) => new Vector3f(this[X], this[Y], this[Z]);
         public void CreateCoordinateSystem(out Vector3f v2, out Vector3f v3)
         {
             v2 = Math.Abs(X) > Math.Abs(Y)

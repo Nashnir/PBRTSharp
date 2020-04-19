@@ -14,7 +14,7 @@ namespace PBRTSharp.Core.Vectors
             Y = y;
         }
 
-        public int this[in int i] => i == 0 ? X : Y;
+        public int this[int i] => i == 0 ? X : Y;
 
         // Operator overloads
         public static Vector2i operator +(in Vector2i v1, in Vector2i v2) => new Vector2i(v1.X + v2.X, v1.Y + v2.Y);
@@ -46,6 +46,6 @@ namespace PBRTSharp.Core.Vectors
         public double MinComponent() => Math.Min(X, Y);
         public double MaxComponent() => Math.Max(X, Y);
         public double MaxDimension() => X > Y ? 0 : 1;
-        public Vector2i Permute(in int X, in int Y) => new Vector2i(this[X], this[Y]);
+        public Vector2i Permute(int X, int Y) => new Vector2i(this[X], this[Y]);
     }
 }

@@ -23,7 +23,7 @@ namespace PBRTSharp.Core.Normals
             Z = v.Z;
         }
 
-        public double this[in int i] => i == 0 ? X : i == 1 ? Y : Z;
+        public double this[int i] => i == 0 ? X : i == 1 ? Y : Z;
 
         // Operator overloads
         public static Normal3f operator +(in Normal3f v1, in Normal3f v2) => new Normal3f(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
@@ -55,7 +55,7 @@ namespace PBRTSharp.Core.Normals
         public double MinComponent() => Math.Min(X, Math.Min(Y, Z));
         public double MaxComponent() => Math.Max(X, Math.Max(Y, Z));
         public double MaxDimension() => X > Y ? (X > Z ? 0 : 2) : (Y > Z ? 1 : 2);
-        public Normal3f Permute(in int X, in int Y, in int Z) => new Normal3f(this[X], this[Y], this[Z]);
+        public Normal3f Permute(int X, int Y, int Z) => new Normal3f(this[X], this[Y], this[Z]);
         public Normal3f FlipToSameHemisphereAs(in Vector3f v) => Dot(v) < 0d ? -this : this;
     }
 }

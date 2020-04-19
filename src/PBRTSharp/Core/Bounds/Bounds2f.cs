@@ -23,12 +23,12 @@ namespace PBRTSharp.Core.Bounds
 
         public static Bounds2f MaximumBounds => new Bounds2f(new Point2f(double.MinValue, double.MinValue),
                                                              new Point2f(double.MaxValue, double.MaxValue));
-        public Point2f this[in int i] => i == 0 ? Min : Max;
+        public Point2f this[int i] => i == 0 ? Min : Max;
 
         public static bool operator ==(in Bounds2f p1, in Bounds2f p2) => p1.Equals(p2);
         public static bool operator !=(in Bounds2f p1, in Bounds2f p2) => !(p1 == p2);
 
-        public Point2f Corner(in int corner)
+        public Point2f Corner(int corner)
         {
             return new Point2f(
                     this[corner & 1].X,

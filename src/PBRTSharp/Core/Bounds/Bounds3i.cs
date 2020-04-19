@@ -23,12 +23,12 @@ namespace PBRTSharp.Core.Bounds
 
         public static Bounds3i MaximumBounds => new Bounds3i(new Point3i(int.MinValue, int.MinValue, int.MinValue),
                                                              new Point3i(int.MaxValue, int.MaxValue, int.MaxValue));
-        public Point3i this[in int i] => i == 0 ? Min : Max;
+        public Point3i this[int i] => i == 0 ? Min : Max;
 
         public static bool operator ==(in Bounds3i p1, in Bounds3i p2) => p1.Equals(p2);
         public static bool operator !=(in Bounds3i p1, in Bounds3i p2) => !(p1 == p2);
 
-        public Point3i Corner(in int corner)
+        public Point3i Corner(int corner)
         {
             return new Point3i(
                     this[corner & 1].X,
@@ -89,7 +89,7 @@ namespace PBRTSharp.Core.Bounds
                p.X >= Min.X && p.X < Max.X &&
                p.Y >= Min.Y && p.Y < Max.Y &&
                p.Z >= Min.Z && p.Z < Max.Z;
-        public Bounds3i Expand(in int delta) => new Bounds3i(Min - new Vector3i(delta, delta, delta), Max + new Vector3i(delta, delta, delta));
+        public Bounds3i Expand(int delta) => new Bounds3i(Min - new Vector3i(delta, delta, delta), Max + new Vector3i(delta, delta, delta));
         public Vector3i Diagonal() => Max - Min;
         public double SurfaceArea()
         {

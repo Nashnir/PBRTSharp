@@ -25,12 +25,12 @@ namespace PBRTSharp.Core.Bounds
 
         public static Bounds2i MaximumBounds => new Bounds2i(new Point2i(int.MinValue, int.MinValue),
                                                              new Point2i(int.MaxValue, int.MaxValue));
-        public Point2i this[in int i] => i == 0 ? Min : Max;
+        public Point2i this[int i] => i == 0 ? Min : Max;
 
         public static bool operator ==(in Bounds2i p1, in Bounds2i p2) => p1.Equals(p2);
         public static bool operator !=(in Bounds2i p1, in Bounds2i p2) => !(p1 == p2);
 
-        public Point2i Corner(in int corner)
+        public Point2i Corner(int corner)
         {
             return new Point2i(
                     this[corner & 1].X,
@@ -82,7 +82,7 @@ namespace PBRTSharp.Core.Bounds
         public bool ContainsExclusive(in Point2i p) =>
                         p.X >= Min.X && p.X < Max.X &&
                         p.Y >= Min.Y && p.Y < Max.Y;
-        public Bounds2i Expand(in int delta) => new Bounds2i(Min - new Vector2i(delta, delta), Max + new Vector2i(delta, delta));
+        public Bounds2i Expand(int delta) => new Bounds2i(Min - new Vector2i(delta, delta), Max + new Vector2i(delta, delta));
         public Vector2i Diagonal() => Max - Min;
         public double Area()
         {
