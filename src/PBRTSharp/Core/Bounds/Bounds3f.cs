@@ -89,7 +89,7 @@ namespace PBRTSharp.Core.Bounds
    p.X >= Min.X && p.X < Max.X &&
    p.Y >= Min.Y && p.Y < Max.Y &&
    p.Z >= Min.Z && p.Z < Max.Z;
-        public Bounds3f Expand(in double delta) => new Bounds3f(Min - new Vector3f(delta, delta, delta), Max + new Vector3f(delta, delta, delta));
+        public Bounds3f Expand(double delta) => new Bounds3f(Min - new Vector3f(delta, delta, delta), Max + new Vector3f(delta, delta, delta));
         public Vector3f Diagonal() => Max - Min;
         public double SurfaceArea()
         {

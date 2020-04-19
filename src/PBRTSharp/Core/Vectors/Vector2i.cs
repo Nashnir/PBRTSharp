@@ -19,8 +19,8 @@ namespace PBRTSharp.Core.Vectors
         // Operator overloads
         public static Vector2i operator +(in Vector2i v1, in Vector2i v2) => new Vector2i(v1.X + v2.X, v1.Y + v2.Y);
         public static Vector2i operator -(in Vector2i v1, in Vector2i v2) => new Vector2i(v1.X - v2.X, v1.Y - v2.Y);
-        public static Vector2i operator *(in double d, in Vector2i v) => new Vector2i((int)(d * v.X), (int)(d * v.Y));
-        public static Vector2i operator /(in Vector2i v, in double d) => 1.0d / d * v;
+        public static Vector2i operator *(double d, in Vector2i v) => new Vector2i((int)(d * v.X), (int)(d * v.Y));
+        public static Vector2i operator /(in Vector2i v, double d) => 1.0d / d * v;
         public static Vector2i operator -(in Vector2i v) => new Vector2i(-v.X, -v.Y);
         public static explicit operator Vector2f(in Vector2i p) => new Vector2f(p.X, p.Y);
         public static bool operator ==(Vector2i v1, Vector2i v2) => v1.Equals(v2);

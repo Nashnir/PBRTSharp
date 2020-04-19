@@ -21,8 +21,8 @@ namespace PBRTSharp.Core.Vectors
         // Operator overloads
         public static Vector3f operator +(in Vector3f v1, in Vector3f v2) => new Vector3f(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
         public static Vector3f operator -(in Vector3f v1, in Vector3f v2) => new Vector3f(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
-        public static Vector3f operator *(in double d, in Vector3f v) => new Vector3f(d * v.X, d * v.Y, d * v.Z);
-        public static Vector3f operator /(in Vector3f v, in double d) => 1.0d / d * v;
+        public static Vector3f operator *(double d, in Vector3f v) => new Vector3f(d * v.X, d * v.Y, d * v.Z);
+        public static Vector3f operator /(in Vector3f v, double d) => 1.0d / d * v;
         public static Vector3f operator -(in Vector3f v) => new Vector3f(-v.X, -v.Y, -v.Z);
         public static bool operator ==(Vector3f v1, Vector3f v2) => v1.Equals(v2);
         public static bool operator !=(Vector3f v1, Vector3f v2) => !(v1 == v2);

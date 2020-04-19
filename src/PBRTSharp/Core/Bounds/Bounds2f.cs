@@ -80,7 +80,7 @@ namespace PBRTSharp.Core.Bounds
         public bool ContainsExclusive(in Point2f p) =>
                         p.X >= Min.X && p.X < Max.X &&
                         p.Y >= Min.Y && p.Y < Max.Y;
-        public Bounds2f Expand(in double delta) => new Bounds2f(Min - new Vector2f(delta, delta), Max + new Vector2f(delta, delta));
+        public Bounds2f Expand(double delta) => new Bounds2f(Min - new Vector2f(delta, delta), Max + new Vector2f(delta, delta));
         public Vector2f Diagonal() => Max - Min;
         public double Area()
         {

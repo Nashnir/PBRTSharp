@@ -11,7 +11,7 @@ namespace PBRTSharp.Core.Rays
         public double CastTime { get; }
         // public IMedium Medium { get; } // TODO: add media when I know how to do that
 
-        public Ray(in Point3f origin, in Vector3f direction, in double tMax = double.PositiveInfinity, in double castTime = 0d)
+        public Ray(in Point3f origin, in Vector3f direction, double tMax = double.PositiveInfinity, double castTime = 0d)
         {
             Origin = origin;
             Direction = direction;
@@ -19,6 +19,6 @@ namespace PBRTSharp.Core.Rays
             CastTime = castTime;
         }
 
-        public Point3f ValueAtParameter(in double t) => Origin + (t * Direction);
+        public Point3f ValueAtParameter(double t) => Origin + (t * Direction);
     }
 }

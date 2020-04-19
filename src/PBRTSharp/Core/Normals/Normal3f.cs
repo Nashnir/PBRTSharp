@@ -10,7 +10,7 @@ namespace PBRTSharp.Core.Normals
         public double X { get; }
         public double Y { get; }
         public double Z { get; }
-        public Normal3f(in double x, in double y, in double z)
+        public Normal3f(double x, double y, double z)
         {
             X = x;
             Y = y;
@@ -28,8 +28,8 @@ namespace PBRTSharp.Core.Normals
         // Operator overloads
         public static Normal3f operator +(in Normal3f v1, in Normal3f v2) => new Normal3f(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
         public static Normal3f operator -(in Normal3f v1, in Normal3f v2) => new Normal3f(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
-        public static Normal3f operator *(in double d, in Normal3f v) => new Normal3f(d * v.X, d * v.Y, d * v.Z);
-        public static Normal3f operator /(in Normal3f v, in double d) => 1.0d / d * v;
+        public static Normal3f operator *(double d, in Normal3f v) => new Normal3f(d * v.X, d * v.Y, d * v.Z);
+        public static Normal3f operator /(in Normal3f v, double d) => 1.0d / d * v;
         public static Normal3f operator -(in Normal3f v) => new Normal3f(-v.X, -v.Y, -v.Z);
         public static bool operator ==(Normal3f v1, Normal3f v2) => v1.Equals(v2);
         public static bool operator !=(Normal3f v1, Normal3f v2) => !(v1 == v2);
